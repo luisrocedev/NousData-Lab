@@ -1,0 +1,44 @@
+# Data Access Framework - Requirements
+# Framework avanzado de acceso a datos
+
+# Web Framework
+Flask==2.3.3
+Flask-CORS==4.0.0
+Flask-JWT-Extended==4.5.3
+
+# Base de datos y ORM
+SQLAlchemy==2.0.23
+
+# Autenticación
+PyJWT==2.8.0
+bcrypt==4.0.1
+Werkzeug==2.3.7
+
+# Interfaz gráfica
+tkinter>=8.6  # Incluido en Python estándar
+ttkthemes>=3.2.2
+
+# Manejo de datos
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# Utilidades
+python-dateutil>=2.8.2
+pathlib>=1.0.1  # Incluido en Python 3.4+
+
+# Desarrollo y testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Documentación
+Sphinx>=7.0.0
+
+# Formatos de datos
+lxml>=4.9.0  # Para XML
+xmltodict>=0.13.0
+
+# Logging
+colorlog>=6.7.0
+
+# Validación
+jsonschema>=4.19.0
