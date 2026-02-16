@@ -1,4 +1,4 @@
-# 🚀 Data Access Framework - DAM2
+# 🚀 Data Access Framework
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)
 ![Flask](https://img.shields.io/badge/flask-2.3+-red.svg)
@@ -10,7 +10,7 @@
 
 ## 💼 Descripción del Producto
 
-**Data Access Framework** es una solución empresarial completa para la gestión de datos en aplicaciones Python, diseñada específicamente para DAM2 - Acceso a Datos. Este framework revoluciona el desarrollo de aplicaciones de gestión al proporcionar una arquitectura unificada que soporta **5 formatos de almacenamiento diferentes** con una sola interfaz de programación.
+**Data Access Framework** es una solución empresarial completa para la gestión de datos en aplicaciones Python, diseñada específicamente para Acceso a Datos. Este framework revoluciona el desarrollo de aplicaciones de gestión al proporcionar una arquitectura unificada que soporta **5 formatos de almacenamiento diferentes** con una sola interfaz de programación.
 
 ### 🎯 Valor Empresarial
 
