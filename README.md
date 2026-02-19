@@ -304,6 +304,6 @@ Este proyecto está bajo la licencia **MIT**. Consulta el archivo `LICENSE` para
 
 **NousData-Lab** — Framework de acceso a datos multi-formato
 
-Desarrollado por [Luis Rodrigo Cepeda](https://github.com/luisrocedev)
+Desarrollado por [Luis Rodriguez Cedeño](https://github.com/luisrocedev)
 
 </div>
