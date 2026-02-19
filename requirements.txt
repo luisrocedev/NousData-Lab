@@ -1,44 +1,25 @@
-# Data Access Framework - Requirements
-# Framework avanzado de acceso a datos
+# NousData-Lab — Dependencias
+# Framework de acceso a datos multi-formato
 
-# Web Framework
-Flask==2.3.3
-Flask-CORS==4.0.0
-Flask-JWT-Extended==4.5.3
+# ── Web Framework (API REST) ──────────────────────────
+Flask>=2.3.0
+Flask-CORS>=4.0.0
+Flask-JWT-Extended>=4.5.0
+Werkzeug>=2.3.0
 
-# Base de datos y ORM
-SQLAlchemy==2.0.23
+# ── Base de datos ─────────────────────────────────────
+SQLAlchemy>=2.0.0
 
-# Autenticación
-PyJWT==2.8.0
-bcrypt==4.0.1
-Werkzeug==2.3.7
+# ── Autenticación ─────────────────────────────────────
+PyJWT>=2.8.0
 
-# Interfaz gráfica
-tkinter>=8.6  # Incluido en Python estándar
-ttkthemes>=3.2.2
+# ── Formatos de datos ─────────────────────────────────
+lxml>=4.9.0
 
-# Manejo de datos
-pandas>=2.0.0
-openpyxl>=3.1.0
-
-# Utilidades
+# ── Utilidades ────────────────────────────────────────
 python-dateutil>=2.8.2
-pathlib>=1.0.1  # Incluido en Python 3.4+
 
-# Desarrollo y testing
-pytest>=7.4.0
-pytest-cov>=4.1.0
-
-# Documentación
-Sphinx>=7.0.0
-
-# Formatos de datos
-lxml>=4.9.0  # Para XML
-xmltodict>=0.13.0
-
-# Logging
-colorlog>=6.7.0
-
-# Validación
+# ── Desarrollo y testing (opcional) ───────────────────
+# pytest>=7.4.0
+# pytest-cov>=4.1.0
 jsonschema>=4.19.0

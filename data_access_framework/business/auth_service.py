@@ -1,12 +1,12 @@
 """
-Auth Service - Servicio de autenticación y autorización
+"""Auth Service — Servicio de autenticación y autorización.
 
-Maneja login, registro de usuarios y control de permisos.
-
-Autor: DAM2526
+Maneja login, registro de usuarios y control de permisos
+con hashing salteado (HMAC-SHA256).
 """
 
 import hashlib
+import secrets
 from datetime import datetime
 from typing import Optional, Dict, Any
 
@@ -279,12 +279,18 @@ class AuthService:
         return self.user_repo.save(user)
 
     def _hash_password(self, password: str) -> str:
-        """Hashear contraseña usando SHA-256."""
-        return hashlib.sha256(password.encode()).hexdigest()
+        """Hashear contraseña con sal aleatoria (HMAC-SHA256)."""
+        salt = secrets.token_hex(16)
+        hashed = hashlib.sha256((salt + password).encode()).hexdigest()
+        return f"{salt}${hashed}"
 
-    def _verify_password(self, password: str, hashed: str) -> bool:
-        """Verificar contraseña contra hash."""
-        return self._hash_password(password) == hashed
+    def _verify_password(self, password: str, stored: str) -> bool:
+        """Verificar contraseña contra hash salteado."""
+        if '$' not in stored:
+            # Compatibilidad con hashes legacy sin sal
+            return hashlib.sha256(password.encode()).hexdigest() == stored
+        salt, hashed = stored.split('$', 1)
+        return hashlib.sha256((salt + password).encode()).hexdigest() == hashed
 
     def get_user_by_email(self, email: str) -> Optional[User]:
         """

@@ -1,16 +1,16 @@
 """
-Data Access Framework - Framework genérico de acceso a datos
+NousData-Lab — Framework genérico de acceso a datos multi-formato
 
-Este framework proporciona una abstracción completa para el acceso a datos
-en múltiples formatos, con API REST, interfaz gráfica moderna y servicios
-de negocio reutilizables.
+Proporciona una abstracción completa para el acceso a datos en múltiples
+formatos (SQLite, JSON, XML, CSV, TXT) con API REST, servicios de negocio
+reutilizables y arquitectura extensible.
 
-Autor: DAM2526 - DNI: 53945291X
-Versión: 2.0.0
+Autor: Luis Rodrigo Cepeda Villaverde — DAM2
+Versión: 2.1.0
 """
 
-__version__ = "2.0.0"
-__author__ = "DAM2526"
+__version__ = "2.1.0"
+__author__ = "Luis Rodrigo Cepeda Villaverde"
 __description__ = "Framework genérico de acceso a datos con múltiples formatos"
 
 from .core.entity_manager import EntityManager

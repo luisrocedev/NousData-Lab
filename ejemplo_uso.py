@@ -153,8 +153,7 @@ def main():
         print("\n🌐 Iniciando API REST...")
         framework.start_api()
     else:
-        print("\n💻 Iniciando interfaz gráfica...")
-        framework.start_ui()
+        print("\nℹ️  Ejecuta con api.enabled=True para iniciar el servidor REST.")
 
 
 if __name__ == '__main__':

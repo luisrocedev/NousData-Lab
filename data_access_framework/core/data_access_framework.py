@@ -1,14 +1,13 @@
 """
-Data Access Framework - Clase principal del framework
+NousData-Lab — Clase principal del framework
 
 Esta clase coordina todos los componentes del framework:
-- Gestores de datos
+- Gestores de datos (5 formatos)
 - Servicios de negocio
 - API REST
-- Interfaz gráfica
-- Configuración
+- Configuración centralizada
 
-Autor: DAM2526
+Autor: Luis Rodrigo Cepeda Villaverde — DAM2
 """
 
 import json
@@ -214,10 +213,15 @@ class DataAccessFramework:
         if not self.config.ui_enabled:
             raise RuntimeError("UI no habilitada en configuración")
 
-        from ..ui.modern_app import ModernApp
-
-        app = ModernApp(self)
-        app.run()
+        try:
+            from ..ui.modern_app import ModernApp
+            app = ModernApp(self)
+            app.run()
+        except ImportError:
+            raise RuntimeError(
+                "Módulo UI no disponible. Usa la API REST con "
+                "framework.start_api() o los repositorios directamente."
+            )
 
     def migrate_data(self, from_format: str, to_format: str):
         """

@@ -8,7 +8,7 @@ Autor: DAM2526
 
 from dataclasses import dataclass, field
 from typing import Optional, List, Dict, Any
-from datetime import datetime
+from datetime import datetime, timedelta
 import uuid
 
 
@@ -38,13 +38,15 @@ class BaseEntity:
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'BaseEntity':
-        """Crear entidad desde diccionario."""
-        # Convertir strings de fecha a objetos datetime
+        """Crear entidad desde diccionario, filtrando campos desconocidos."""
         if 'created_at' in data and isinstance(data['created_at'], str):
             data['created_at'] = datetime.fromisoformat(data['created_at'])
         if 'updated_at' in data and isinstance(data['updated_at'], str):
             data['updated_at'] = datetime.fromisoformat(data['updated_at'])
-        return cls(**data)
+        # Filtrar campos que no pertenecen al dataclass para evitar TypeError
+        valid_fields = {f for f in cls.__dataclass_fields__}
+        filtered = {k: v for k, v in data.items() if k in valid_fields}
+        return cls(**filtered)
 
 
 @dataclass
@@ -175,14 +177,20 @@ class User(BaseEntity):
         return f"{self.name} {self.last_name}"
 
     def set_password(self, password: str):
-        """Establecer contraseña hasheada."""
-        import hashlib
-        self.password_hash = hashlib.sha256(password.encode()).hexdigest()
+        """Establecer contraseña hasheada con sal (HMAC-SHA256)."""
+        import hashlib, secrets
+        salt = secrets.token_hex(16)
+        hashed = hashlib.sha256((salt + password).encode()).hexdigest()
+        self.password_hash = f"{salt}${hashed}"
 
     def check_password(self, password: str) -> bool:
-        """Verificar contraseña."""
+        """Verificar contraseña contra hash con sal."""
         import hashlib
-        return self.password_hash == hashlib.sha256(password.encode()).hexdigest()
+        if '$' not in self.password_hash:
+            # Compatibilidad con hashes legacy sin sal
+            return self.password_hash == hashlib.sha256(password.encode()).hexdigest()
+        salt, stored_hash = self.password_hash.split('$', 1)
+        return stored_hash == hashlib.sha256((salt + password).encode()).hexdigest()
 
 
 @dataclass
@@ -208,7 +216,7 @@ class Loan(BaseEntity):
     book_id: str = ""
     user_id: str = ""
     loan_date: datetime = field(default_factory=datetime.now)
-    due_date: datetime = field(default_factory=lambda: datetime.now().replace(day=datetime.now().day + 14))
+    due_date: datetime = field(default_factory=lambda: datetime.now() + timedelta(days=14))
     return_date: Optional[datetime] = None
     status: str = "active"  # active, returned, overdue
     notes: str = ""
