@@ -1,5 +1,4 @@
-"""
-"""Auth Service — Servicio de autenticación y autorización.
+"""Auth Service - Servicio de autenticacion y autorizacion.
 
 Maneja login, registro de usuarios y control de permisos
 con hashing salteado (HMAC-SHA256).

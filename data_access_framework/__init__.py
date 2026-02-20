@@ -1,11 +1,11 @@
 """
-NousData-Lab — Framework genérico de acceso a datos multi-formato
+NousData-Lab - Framework genérico de acceso a datos multi-formato
 
 Proporciona una abstracción completa para el acceso a datos en múltiples
 formatos (SQLite, JSON, XML, CSV, TXT) con API REST, servicios de negocio
 reutilizables y arquitectura extensible.
 
-Autor: Luis Rodrigo Cepeda Villaverde — DAM2
+Autor: Luis Rodrigo Cepeda Villaverde - DAM2
 Versión: 2.1.0
 """
 

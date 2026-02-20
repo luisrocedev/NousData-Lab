@@ -1,3 +1,3 @@
 """
-API Routes — Blueprints de la API REST.
+API Routes - Blueprints de la API REST.
 """

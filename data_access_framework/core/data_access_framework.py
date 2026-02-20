@@ -1,5 +1,5 @@
 """
-NousData-Lab — Clase principal del framework
+NousData-Lab - Clase principal del framework
 
 Esta clase coordina todos los componentes del framework:
 - Gestores de datos (5 formatos)
@@ -7,7 +7,7 @@ Esta clase coordina todos los componentes del framework:
 - API REST
 - Configuración centralizada
 
-Autor: Luis Rodrigo Cepeda Villaverde — DAM2
+Autor: Luis Rodrigo Cepeda Villaverde - DAM2
 """
 
 import json

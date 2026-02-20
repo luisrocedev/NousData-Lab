@@ -26,18 +26,18 @@ El dominio de ejemplo implementa un **sistema completo de gestión de biblioteca
 
 ## ✨ Características
 
-| Categoría | Funcionalidad | Detalle |
-|-----------|---------------|---------|
-| 🗄️ **Multi-formato** | 5 backends de datos | SQLite · JSON · XML · CSV · TXT (JSON-Lines) |
-| 🔄 **Intercambiable** | Factory + Strategy | Cambiar formato con un solo parámetro |
-| 🌐 **API REST** | Flask + Blueprints | CRUD completo, paginación, filtros, health check |
-| 🔐 **Autenticación** | JWT + HMAC-SHA256 | Login, registro, tokens 24h, roles (admin/user/librarian) |
-| 📚 **Préstamos** | Servicio de negocio | Crear, devolver, extender, cálculo de multas automático |
-| 📊 **Reportes** | Motor de informes | Libros, préstamos, usuarios, fines, estadísticas |
-| 🔀 **Migración** | Entre formatos | SQLite → JSON, JSON → XML, etc. con backup automático |
-| ⚙️ **Configuración** | Deep merge + env vars | JSON config, variables de entorno, validación |
-| 🧬 **Modelos** | Dataclasses tipadas | Validación ISBN, contraseñas salted, campos auto-generados |
-| 🏗️ **Extensible** | Patrón Repository | Añadir nuevos formatos implementando `DataManager` |
+| Categoría             | Funcionalidad         | Detalle                                                    |
+| --------------------- | --------------------- | ---------------------------------------------------------- |
+| 🗄️ **Multi-formato**  | 5 backends de datos   | SQLite · JSON · XML · CSV · TXT (JSON-Lines)               |
+| 🔄 **Intercambiable** | Factory + Strategy    | Cambiar formato con un solo parámetro                      |
+| 🌐 **API REST**       | Flask + Blueprints    | CRUD completo, paginación, filtros, health check           |
+| 🔐 **Autenticación**  | JWT + HMAC-SHA256     | Login, registro, tokens 24h, roles (admin/user/librarian)  |
+| 📚 **Préstamos**      | Servicio de negocio   | Crear, devolver, extender, cálculo de multas automático    |
+| 📊 **Reportes**       | Motor de informes     | Libros, préstamos, usuarios, fines, estadísticas           |
+| 🔀 **Migración**      | Entre formatos        | SQLite → JSON, JSON → XML, etc. con backup automático      |
+| ⚙️ **Configuración**  | Deep merge + env vars | JSON config, variables de entorno, validación              |
+| 🧬 **Modelos**        | Dataclasses tipadas   | Validación ISBN, contraseñas salted, campos auto-generados |
+| 🏗️ **Extensible**     | Patrón Repository     | Añadir nuevos formatos implementando `DataManager`         |
 
 ---
 
@@ -64,11 +64,11 @@ El dominio de ejemplo implementa un **sistema completo de gestión de biblioteca
 
 ### Patrones de Diseño
 
-| Patrón | Uso |
-|--------|-----|
-| **Factory** | `DataAccessFramework` crea el backend correcto según `data_format` |
-| **Repository** | `EntityManager[T]` proporciona CRUD genérico tipado por entidad |
-| **Strategy** | Cada `DataManager` implementa la misma interfaz con diferente almacenamiento |
+| Patrón         | Uso                                                                          |
+| -------------- | ---------------------------------------------------------------------------- |
+| **Factory**    | `DataAccessFramework` crea el backend correcto según `data_format`           |
+| **Repository** | `EntityManager[T]` proporciona CRUD genérico tipado por entidad              |
+| **Strategy**   | Cada `DataManager` implementa la misma interfaz con diferente almacenamiento |
 
 ---
 
@@ -233,21 +233,21 @@ framework.start_api()
 
 ### Endpoints principales
 
-| Método | Endpoint | Auth | Descripción |
-|--------|----------|------|-------------|
-| `GET` | `/health` | ❌ | Health check del servidor |
-| `GET` | `/stats` | ❌ | Estadísticas del sistema |
-| `POST` | `/auth/register` | ❌ | Registrar usuario |
-| `POST` | `/auth/login` | ❌ | Obtener token JWT |
-| `GET` | `/books` | ✅ | Listar libros |
-| `POST` | `/books` | ✅ | Crear libro |
-| `GET` | `/books/<id>` | ✅ | Obtener libro por ID |
-| `PUT` | `/books/<id>` | ✅ | Actualizar libro |
-| `DELETE` | `/books/<id>` | ✅ | Eliminar libro |
-| `POST` | `/loans` | ✅ | Crear préstamo |
-| `POST` | `/loans/<id>/return` | ✅ | Devolver préstamo |
-| `GET` | `/reports/books` | ✅ | Reporte de libros |
-| `GET` | `/reports/loans` | ✅ | Reporte de préstamos |
+| Método   | Endpoint             | Auth | Descripción               |
+| -------- | -------------------- | ---- | ------------------------- |
+| `GET`    | `/health`            | ❌   | Health check del servidor |
+| `GET`    | `/stats`             | ❌   | Estadísticas del sistema  |
+| `POST`   | `/auth/register`     | ❌   | Registrar usuario         |
+| `POST`   | `/auth/login`        | ❌   | Obtener token JWT         |
+| `GET`    | `/books`             | ✅   | Listar libros             |
+| `POST`   | `/books`             | ✅   | Crear libro               |
+| `GET`    | `/books/<id>`        | ✅   | Obtener libro por ID      |
+| `PUT`    | `/books/<id>`        | ✅   | Actualizar libro          |
+| `DELETE` | `/books/<id>`        | ✅   | Eliminar libro            |
+| `POST`   | `/loans`             | ✅   | Crear préstamo            |
+| `POST`   | `/loans/<id>/return` | ✅   | Devolver préstamo         |
+| `GET`    | `/reports/books`     | ✅   | Reporte de libros         |
+| `GET`    | `/reports/loans`     | ✅   | Reporte de préstamos      |
 
 ### Ejemplo con cURL
 
@@ -282,15 +282,15 @@ curl -X POST http://localhost:5000/books \
 
 ## 🛠 Tecnologías
 
-| Componente | Tecnología | Versión |
-|-----------|------------|---------|
-| Lenguaje | Python | 3.13 |
-| API REST | Flask | 2.3+ |
-| CORS | Flask-CORS | 4.0+ |
-| JWT | PyJWT / Flask-JWT-Extended | 2.0+ |
-| Base de datos | SQLite3 (stdlib) | — |
-| XML | lxml | 5.0+ |
-| Fechas | python-dateutil | 2.8+ |
+| Componente    | Tecnología                 | Versión |
+| ------------- | -------------------------- | ------- |
+| Lenguaje      | Python                     | 3.13    |
+| API REST      | Flask                      | 2.3+    |
+| CORS          | Flask-CORS                 | 4.0+    |
+| JWT           | PyJWT / Flask-JWT-Extended | 2.0+    |
+| Base de datos | SQLite3 (stdlib)           | —       |
+| XML           | lxml                       | 5.0+    |
+| Fechas        | python-dateutil            | 2.8+    |
 
 ---
 

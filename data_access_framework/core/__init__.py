@@ -1,5 +1,5 @@
 """
-Core — Núcleo del framework de acceso a datos.
+Core - Núcleo del framework de acceso a datos.
 
 Incluye el framework principal, gestor de entidades,
 configuración y migraciones.
